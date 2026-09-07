@@ -15,9 +15,16 @@ module.exports = (sequelize, DataTypes) => {
   }
   Task.init({
     title: DataTypes.STRING,
-    description: DataTypes.STRING,
-    completed: DataTypes.BOOLEAN
-  }, {
+    description: {
+      type: DataTypes.STRING,
+      defaultValue: null
+    },
+    completed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
+  },
+  {
     sequelize,
     modelName: 'Task',
   });
