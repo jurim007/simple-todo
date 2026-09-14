@@ -14,7 +14,7 @@ async function createTask(req, res) {
 // READ ALL — GET /
 async function getAllTasks(req, res) {
   try {
-    const tasks = await Task.findAll({ include: User });
+    const tasks = await Task.findAll({ where: { userId: req.query.userId }, include: User });
     res.status(200).json(tasks);
   } catch (err) {
     res.status(500).json({ error: err.message });
